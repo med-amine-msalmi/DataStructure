@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 using namespace std;
@@ -26,7 +27,7 @@ public:
         Head=newNode;
         size++;
     }
-    Node* FindNodebyValue(T value)
+    Node* getNodebyValue(T value)
     {
         Node* Current=Head;
         while(Current!=nullptr)
@@ -37,9 +38,37 @@ public:
         }
         return nullptr;
     }
+    Node* getNodeByIndex(int Index)
+    {
+     int Counter = 0;
+
+        if (Index > size- 1 || Index < 0)
+            return nullptr;
+
+        Node* Current = Head;
+        while (Current != nullptr && (Current->Next != nullptr)) {
+
+            if (Counter == Index)
+                break;
+
+            Current = Current->Next;
+            Counter++;
+
+        }
+
+        return Current;
+
+    }
+    T getElement(int index)
+    {
+        Node* node=getNodeByIndex(index);
+        if(node!=nullptr)
+            return node->value;
+        throw out_of_range("index out of range");
+    }
     void InsertAfter(T PreviousValue,T value)
     {
-        Node* PreviousNode=FindNodebyValue(PreviousValue);
+        Node* PreviousNode=getNodebyValue(PreviousValue);
         if(PreviousNode!=nullptr)
         {
         Node* newNode=new Node;
@@ -75,7 +104,7 @@ public:
     }
     void Delete(T value)
     {
-        Node* CurrentNode=FindNodebyValue(value);
+        Node* CurrentNode=getNodebyValue(value);
         if(CurrentNode==nullptr || Head==nullptr)
             return;
         if(CurrentNode==Head)
@@ -115,10 +144,32 @@ public:
         size--;
         delete CurrentNode;
     }
+    void Clear()
+    {
+        while(size>0)
+        {
+            DeleteFirstNode();
+        }   
+    }
     int Size()
     {
         return size;
     }
+    bool isEmpty()
+    {
+        return size==0?true:false;
+    }
+    void Reverse()
+    {
+        clsDbLinkedList ReversedLinked;
+        while (size > 0)
+        {
+            ReversedLinked.InsertAtBeginning(Head->value);
+            DeleteFirstNode();
+        }
+        *this = ReversedLinked;
+    }
+    
      void PrintList()
     {
         cout<<"[";
