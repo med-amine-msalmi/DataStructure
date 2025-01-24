@@ -169,7 +169,6 @@ public:
         }
         *this = ReversedLinked;
     }
-    
      void PrintList()
     {
         cout<<"[";

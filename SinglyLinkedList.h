@@ -93,24 +93,3 @@ void DeleteLastNode(Node* Head)
     Prev->next=nullptr;
     delete CurrentNode;
 }
-int main()
-{
-   
-
-
-    Node* Head=nullptr;
-    InsertAtBeginning(Head,6);
-    InsertAtBeginning(Head,5);
-    InsertAtBeginning(Head,4);
-    InsertAtBeginning(Head,3);
-    InsertAtBeginning(Head,2);
-
-    Delete(Head,4);
-    DeleteLastNode(Head);
-
-    PrintLinkedList(Head);
-
-    delete Head;
-
-  
-}
