@@ -3,35 +3,57 @@
 using namespace std;
 template<typename T> class clsQueue
 {
-private:
-    clsDbLinkedList<T> MyQueue;
+protected:
+    clsDbLinkedList<T> _myqueue;
 public:
      void push(T value)
     {
-        MyQueue.InsertAtEnd(value);
+        _myqueue.InsertAtEnd(value);
     }
     void pop()
     {
-        MyQueue.DeleteFirstNode();
+        _myqueue.DeleteFirstNode();
     }
-    void Size()
+    int Size()
     {
-        return MyQueue.size();
+        return _myqueue.Size();
     }
     void Print()
     {
-        MyQueue.PrintList();
+        _myqueue.PrintList();
     }
     bool isEmpty()
     {
-        MyQueue.isEmpty();
+        _myqueue.isEmpty();
     }
-    T fornt()
+    T front()
     {
-        return MyQueue.getElement(0);
+        return _myqueue.getElement(0);
     }
     T back()
     {
-        return MyQueue.getElement(Size()-1);
+        return _myqueue.getElement(Size()-1);
+    }
+    T getItem(int index)
+    {
+       return _myqueue.getElement(index);
+    }
+    void Reverse()
+    {
+        _myqueue.Reverse();
+    }
+    
+    void UpdateItem(int index,T value)
+    {
+        _myqueue.UpdateItem(index,value);
+        
+    }
+    void InsertAfterIndex(int index,T value)
+    {
+        _myqueue.InsertAfterIndex(index,value);
+    }
+    void Clear()
+    {
+        _myqueue.Clear();
     }
 };

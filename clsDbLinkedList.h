@@ -5,10 +5,22 @@ using namespace std;
 template <typename T> class clsDbLinkedList{
 private:
 int size=0;
+
+
+void _Reverse( clsDbLinkedList &obj)
+    {
+        clsDbLinkedList ReversedLinked;
+        while (size > 0)
+        {
+            ReversedLinked.InsertAtBeginning(Head->value);
+            DeleteFirstNode();
+        }
+        obj = ReversedLinked;
+    }
     
 public:
-    struct Node{
-        T value;
+    struct  Node{
+        T     value;
         Node* Prev;
         Node* Next;
     };
@@ -66,7 +78,7 @@ public:
             return node->value;
         throw out_of_range("index out of range");
     }
-    void InsertAfter(T PreviousValue,T value)
+    void InsertAfterValue(T PreviousValue,T value)
     {
         Node* PreviousNode=getNodebyValue(PreviousValue);
         if(PreviousNode!=nullptr)
@@ -101,6 +113,11 @@ public:
         newNode->Prev=nullptr;
         Head=newNode;
         
+    }
+    void UpdateItem(int index,T value)
+    {
+        Node* node=getNodeByIndex(index);
+        node->value=value;
     }
     void Delete(T value)
     {
@@ -159,15 +176,21 @@ public:
     {
         return size==0?true:false;
     }
+    
     void Reverse()
     {
-        clsDbLinkedList ReversedLinked;
-        while (size > 0)
+        _Reverse(*this);
+    }
+    bool InsertAfterIndex(int index,T value)
+    {
+        Node* ItemNode = getNodeByIndex(index);
+        if (ItemNode != nullptr)
         {
-            ReversedLinked.InsertAtBeginning(Head->value);
-            DeleteFirstNode();
+            InsertAfterValue(ItemNode->value, value);
+            return true;
         }
-        *this = ReversedLinked;
+        else
+            return false;
     }
      void PrintList()
     {

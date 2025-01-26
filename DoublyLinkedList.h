@@ -29,7 +29,7 @@ void InsertAtBeginning(Node* &Head,int value)
         Head=Head->next;
     }
 }
-void InsertAfter(Node* &Head,int PreviousValue,int value)
+void InsertAfterValue(Node* &Head,int PreviousValue,int value)
 {
     Node* PreviousNode=FindNodebyValue(Head,PreviousValue);
     if(PreviousNode!=nullptr)
@@ -103,6 +103,7 @@ void DeleteLastNode(Node* &Head)
         Head=nullptr;
     delete CurrentNode;
 }
+
  void PrintList(Node* Head)
  {
     while(Head!=nullptr)
@@ -110,24 +111,4 @@ void DeleteLastNode(Node* &Head)
         cout<<Head->value<<"|";
         Head=Head->next;
     }
- }
-
- int main()
- {
-    Node* Head=nullptr;
-    InsertAtBeginning(Head,6);
-    InsertAtBeginning(Head,5);
-    InsertAtBeginning(Head,4);
-    InsertAtBeginning(Head,3);
-    
-    InsertAfter(Head,4,0);
-    InsertAtEnd(Head,7);
-
-    DeletNode(Head,3);
-    DeletNode(Head,7);
-
-    DeleteFirstNode(Head);
-    
-    DeleteLastNode(Head);
-    PrintList(Head);
  }

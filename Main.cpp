@@ -1,44 +1,35 @@
 #include <iostream>
 #include "clsDbLinkedList.h"
+#include "clsQueue.h"
+#include "clsStack.h"
 using namespace std;
 int main()
 {
-    clsDbLinkedList<float> list;
-    list.InsertAtBeginning(4);
-    list.InsertAtBeginning(3);
-    list.InsertAtBeginning(3.23);
-    list.InsertAtBeginning(6);
-    list.InsertAtBeginning(0.25);
-    list.InsertAtBeginning(0.25);
+    clsDbLinkedList<float> linkedlist;
+    /*
+    linkedlist.InsertAtBeginning(323);
+    linkedlist.InsertAtBeginning(3.2);
+    linkedlist.InsertAtBeginning(0.3);
+    linkedlist.UpdateItem(2,0.002);
 
-    list.InsertAfter(4,0.7);
+    linkedlist.PrintList();
+    
+    
+    clsQueue<float> myqueue;
+    myqueue.push(23.23);
+    myqueue.push(99);
+    myqueue.push(67);
 
-    list.InsertAtEnd(3.14);
-
-
-   float val=list.getElement(4);
-
-   clsDbLinkedList<float>::Node* node=list.getNodeByIndex(3);
-   cout<<node->value;
-   list.Delete(3.23);
-   list.DeleteFirstNode();
-   list.DeleteLastNode();
-
-  list.Reverse();
-  //delete all items
-   list.Clear();
+     myqueue.UpdateItem(2,0);
+    
+    myqueue.InsertAfterIndex(0,2);
+    myqueue.InsertAtFront(0);
+ 
+    myqueue.Print();  
+     */
+    clsStack<int> mystack;
+    mystack.Print();
+    
+    
   
-    cout<<list.Size();
-
-    list.PrintList();
-    cout<<endl;
-
-   
-   clsDbLinkedList<int> dblinked;
-   dblinked.InsertAtEnd(4);
-   
-   dblinked.DeleteLastNode();
-   cout<<dblinked.isEmpty();
-   dblinked.PrintList();
-   
 }

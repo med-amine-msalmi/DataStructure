@@ -48,7 +48,7 @@ Node* FindNodebyValue(Node* Head,int value)
         Head=Head->next;
     }
 }
-void InsertAfter(Node* &Head,int After,int value)
+void InsertAfterValue(Node* &Head,int After,int value)
 {
     Node* node=FindNodebyValue(Head,After);
     if(node==nullptr)
