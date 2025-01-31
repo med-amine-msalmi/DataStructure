@@ -32,11 +32,21 @@ int main()
     clsStack<int> mystack;
     mystack.Print();
      */
-    DynamicArray<int> arr(3);
+    DynamicArray<int> arr(4);
     arr.setItem(0,2);
     arr.setItem(1,3);
-    arr.setItem(2,4);
-    arr.DeleteItemAt(1);
+    arr.setItem(2,5);
+    arr.setItem(3,6);
+   // cout<<arr.Find(4);
+   /*arr.DeleteItemAt(1);
+   arr.DeleteFirstItem();
+   arr.DeleteLastItem();
+   arr.DeleteFirstItem();
+   */
+    //arr.DeleteItem(4);
+    arr.InsertAtBeginning(1);
+    arr.InsertAtEnd(7);
+    arr.InsertAfter(2,4);
     arr.PrintList();
   
     

@@ -58,6 +58,15 @@ public:
         OrignalArray=copy;
         delete[] copy;
     }
+    int Find(T value)
+    {
+        for(int i=0;i<_Size;i++)
+        {
+            if(OrignalArray[i]==value)
+                return i;
+        }
+        return -1;
+    }
     void Clear()
     { 
         _Size=0;
@@ -83,6 +92,54 @@ public:
         _Size--;
 
         return true;
+    }
+    void DeleteFirstItem()
+    {
+        DeleteItemAt(0);
+    }
+    void DeleteLastItem()
+    {
+        DeleteItemAt(_Size-1);
+    }
+    void DeleteItem(T value)
+    {
+        int index=Find(value);
+        if(index!=-1)
+            DeleteItemAt(index);
+    }
+    bool InsertAt(int index,T value)
+    {
+        if(index<0 || index>_Size-1)
+            return false;
+        _Size++;
+        T* copy=new T[_Size-1];
+        for(int i=0;i<index;i++)
+        {
+            copy[i]=OrignalArray[i];
+        }
+        for(int i=index+1;i<_Size;i++)
+        {
+            copy[i]=OrignalArray[i-1];
+        }
+        OrignalArray=copy;
+        setItem(index,value);
+        return true;
+    }
+    bool InsertAtBeginning(T value)
+    {
+        InsertAt(0,value);
+    }
+    bool InserBefor(int index,T value)
+    {
+        InsertAt(index-1,value);
+    }
+    bool InsertAfter(int index,T value)
+    {
+        InsertAt(index+1,value);
+    }
+    bool InsertAtEnd(T value)
+    {
+        InsertAt(_Size,value);  
     }
     void PrintList()
     {
