@@ -4,19 +4,29 @@
 #include "DynamicArray.h"
 template<typename T> class clsStackArr
 {
-private:
+protected:
     DynamicArray<T> StackArr;
 public:
-    void Push()
+    void Push(T value)
     {
-        StackArr.InsertAtEnd();
+        StackArr.InsertAtEnd(value);
     }
     void Pop()
     {
         StackArr.DeleteLastItem();
     }
+    T GetLastItem()
+    {
+       return StackArr.getLastItem();
+    }
     void Print()
     {
         StackArr.PrintList();
     }
+    void SetLastItem(T value)
+    {
+        StackArr.setItem(StackArr.Size()-1,value);
+    }
+    
+
 };

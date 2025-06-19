@@ -48,6 +48,10 @@ public:
     {
         return OrignalArray[index];
     }
+    T getLastItem()
+    {
+        return OrignalArray[_Size-1];
+    }
     void Reverse()
     {
         T* copy=OrignalArray;
@@ -109,37 +113,38 @@ public:
     }
     bool InsertAt(int index,T value)
     {
-        if(index<0 || index>_Size-1)
+        if (index < 0 || index > _Size)
             return false;
+
+        T* newArray = new T[_Size + 1];
+        for (int i = 0; i < index; i++) {
+            newArray[i] = OrignalArray[i];
+        }
+        newArray[index] = value;
+        for (int i = index; i < _Size; i++) {
+            newArray[i + 1] = OrignalArray[i];
+        }
+
+        delete[] OrignalArray;
+        OrignalArray = newArray;
         _Size++;
-        T* copy=new T[_Size-1];
-        for(int i=0;i<index;i++)
-        {
-            copy[i]=OrignalArray[i];
-        }
-        for(int i=index+1;i<_Size;i++)
-        {
-            copy[i]=OrignalArray[i-1];
-        }
-        OrignalArray=copy;
-        setItem(index,value);
         return true;
     }
     bool InsertAtBeginning(T value)
     {
-        InsertAt(0,value);
+       return InsertAt(0,value);
     }
     bool InserBefor(int index,T value)
     {
-        InsertAt(index-1,value);
+       return InsertAt(index-1,value);
     }
     bool InsertAfter(int index,T value)
     {
-        InsertAt(index+1,value);
+       return InsertAt(index+1,value);
     }
     bool InsertAtEnd(T value)
     {
-        InsertAt(_Size,value);  
+        return InsertAt(_Size,value);  
     }
     void PrintList()
     {

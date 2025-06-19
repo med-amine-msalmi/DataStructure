@@ -3,6 +3,8 @@
 #include "clsQueue.h"
 #include "clsStack.h"
 #include "DynamicArray.h"
+#include "clsStackArr.h"
+#include "clsString.h"
 using namespace std;
 int main()
 {
@@ -31,25 +33,48 @@ int main()
     
     clsStack<int> mystack;
     mystack.Print();
-     */
-    DynamicArray<int> arr(4);
+   
+    
     arr.setItem(0,2);
     arr.setItem(1,3);
     arr.setItem(2,5);
     arr.setItem(3,6);
-   // cout<<arr.Find(4);
-   /*arr.DeleteItemAt(1);
-   arr.DeleteFirstItem();
-   arr.DeleteLastItem();
-   arr.DeleteFirstItem();
-   */
-    //arr.DeleteItem(4);
-    arr.InsertAtBeginning(1);
-    arr.InsertAtEnd(7);
-    arr.InsertAfter(2,4);
-    arr.PrintList();
-  
-    
+    cout<<arr.Find(4);
+    arr.DeleteItemAt(1);
+    arr.DeleteFirstItem();
+    arr.DeleteLastItem();
+    arr.DeleteFirstItem();
 
+     
+    DynamicArray<int> arr;
   
+   
+    arr.InsertAtEnd(1);
+    arr.InsertAtEnd(2);
+    arr.InsertAtEnd(3);
+    
+    arr.PrintList();
+    cout<<arr.getLastItem();
+    */
+    clsString str;
+    str.setValue("mohamed");
+    str.setValue("ahmed");
+    str.setValue("haythem");
+ 
+    
+//undo
+    str.Undo();
+    cout<<"after one undo :"<<str.getValue()<<endl;
+    str.Undo();
+    cout<<"after two undo :"<<str.getValue()<<endl;
+    str.Undo();
+    cout<<"after three undo:"<<str.getValue()<<endl;
+//Redo
+    str.Redo();
+    cout<<"after one Redo :"<<str.getValue()  <<endl;
+    str.Redo();
+    cout<<"after two Redo :"<<str.getValue()  <<endl;
+    str.Redo();
+    cout<<"after three Redo:" <<str.getValue()<<endl;
+
 }
